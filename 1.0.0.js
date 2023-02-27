@@ -1,4 +1,3 @@
-new VConsole()
 
 function lightBox(Allelement) {
     if (Allelement.length === undefined) {
@@ -12,7 +11,7 @@ function lightbox_e(element) {
   element.addEventListener('click',function(event) {
 
   var idchars = "0123456789abcdefghijklmnopqrstuvwxyz";
-      var image_id = "image-box-";
+      var image_id = "light-box-";
       for (var i = 0; i < 32; i++) {
         var idrandomNumber = Math.floor(Math.random() * idchars.length);
         image_id += idchars.substring(idrandomNumber, idrandomNumber + 1);
@@ -92,7 +91,7 @@ aim_width = window_width
       var clone = document.createElement('div')
       clone.id = image_id
     clone.classList.add(image_id)
-  clone.innerHTML = `<div class="${image_id}-img"><canvas></canvas></div><style>.${image_id}-hidden {opacity:0;} .${image_id} .${image_id}-img {position:absolute;top:${element_y}px;left:${element_x}px;width:${element_width}px;height:${element_height}px;margin:0px;padding:0px;border:none;transform-origin:top left;} .${image_id} .${image_id}-img-source {position:absolute;top:${aim_y}px;left:${aim_x}px;width:${aim_width}px;height:${aim_height}px;margin:0px;padding:0px;border:none;transform-origin:top left;background:var(--image-box-url);background-size:${aim_width}px ${aim_height}px;background-position:center center;background-repeat:no-repeat;}.${image_id} {position:fixed;top:0px;left:0px;width:${window_width}px;height:${window_height}px;background:rgba(0,0,0,0);user-select:none;--webkit-user-select:none;} .${image_id}-animation-zoom-open {animation-name:animation-zoom-${image_id};animation-fill-mode:forwards;animation-duration:${transition_duration}ms;animation-timing-function:cubic-${transition_timing_fn};} .${image_id}-animation-bg-open {animation-name:animation-bg-${image_id};animation-fill-mode:forwards;animation-duration:${transition_duration}ms;animation-timing-function:${transition_timing_fn};} .${image_id}-animation-zoom-close {animation-name:animation-zoom-${image_id};animation-fill-mode:forwards;animation-duration:${transition_duration}ms;animation-timing-function:${transition_timing_fn};animation-direction: reverse;}.${image_id}-animation-bg-close {animation-name:animation-bg-${image_id};animation-fill-mode:forwards;animation-duration:${transition_duration}ms;animation-timing-function:${transition_timing_fn};animation-direction: reverse;} .${image_id}-zoom-open {transform:translateX(${aim_x-element_x}px) translateY(${aim_y-element_y}px) scaleX(${aim_width/element_width}) scaleY(${aim_height/element_height})}.${image_id}-bg-open {background:rgba(0,0,0,1)}@keyframes animation-zoom-${image_id} {0%{transform:translateX(0px) translateY(0px) scaleX(1) scaleY(1)}100%{transform:translateX(${aim_x-element_x}px) translateY(${aim_y-element_y}px) scaleX(${aim_width/element_width}) scaleY(${aim_height/element_height})}} @keyframes animation-bg-${image_id} {0%{background:rgba(0,0,0,0)}100%{background:rgba(0,0,0,1)}}</style>`
+  clone.innerHTML = `<div class="${image_id}-img"><canvas></canvas></div><style>.${image_id}-hidden {opacity:0;} .${image_id} .${image_id}-img {position:absolute;top:${element_y}px;left:${element_x}px;width:${element_width}px;height:${element_height}px;margin:0px;padding:0px;border:none;transform-origin:top left;} .${image_id} .${image_id}-img-source {position:absolute;top:${aim_y}px;left:${aim_x}px;width:${aim_width}px;height:${aim_height}px;margin:0px;padding:0px;border:none;transform-origin:top left;background:var(--light-box-url);background-size:${aim_width}px ${aim_height}px;background-position:center center;background-repeat:no-repeat;}.${image_id} {position:fixed;top:0px;left:0px;width:${window_width}px;height:${window_height}px;background:rgba(0,0,0,0);user-select:none;--webkit-user-select:none;} .${image_id}-animation-zoom-open {animation-name:animation-zoom-${image_id};animation-fill-mode:forwards;animation-duration:${transition_duration}ms;animation-timing-function:cubic-${transition_timing_fn};} .${image_id}-animation-bg-open {animation-name:animation-bg-${image_id};animation-fill-mode:forwards;animation-duration:${transition_duration}ms;animation-timing-function:${transition_timing_fn};} .${image_id}-animation-zoom-close {animation-name:animation-zoom-${image_id};animation-fill-mode:forwards;animation-duration:${transition_duration}ms;animation-timing-function:${transition_timing_fn};animation-direction: reverse;}.${image_id}-animation-bg-close {animation-name:animation-bg-${image_id};animation-fill-mode:forwards;animation-duration:${transition_duration}ms;animation-timing-function:${transition_timing_fn};animation-direction: reverse;} .${image_id}-zoom-open {transform:translateX(${aim_x-element_x}px) translateY(${aim_y-element_y}px) scaleX(${aim_width/element_width}) scaleY(${aim_height/element_height})}.${image_id}-bg-open {background:rgba(0,0,0,1)}@keyframes animation-zoom-${image_id} {0%{transform:translateX(0px) translateY(0px) scaleX(1) scaleY(1)}100%{transform:translateX(${aim_x-element_x}px) translateY(${aim_y-element_y}px) scaleX(${aim_width/element_width}) scaleY(${aim_height/element_height})}} @keyframes animation-bg-${image_id} {0%{background:rgba(0,0,0,0)}100%{background:rgba(0,0,0,1)}}</style>`
 document.body.appendChild(clone)
     var c = document.querySelector(`#${image_id} .${image_id}-img canvas`);
     c.width = element_width
@@ -110,7 +109,7 @@ document.querySelector(`#${image_id}`).classList.add(`${image_id}-bg-open`)
       document.querySelector(`#${image_id} .${image_id}-img`).classList.remove(`${image_id}-animation-zoom-open`)
         var source_img = document.createElement('div')
         source_img.classList.add(`${image_id}-img-source`)
-      source_img.style.setProperty('--image-box-url','url(' + imageURL + ')')
+      source_img.style.setProperty('--light-box-url','url(' + imageURL + ')')
         
         document.querySelector(`#${image_id}`).appendChild(source_img)
         
